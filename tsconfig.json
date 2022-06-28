@@ -48,7 +48,8 @@
     //   是否对js文件进行编译
     // 严格检查总开关
     "strict": false,
-      "allowJs": false,
+    // 允许编译器编译JS，JSX文件
+    "allowJs": false,
     //   是否对js文件进行语法检查
     "checkJs": false,
     //   是否对移除注释

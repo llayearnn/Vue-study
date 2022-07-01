@@ -11,6 +11,7 @@ import EmitComponent from '@/components/EmitComponent'
 import Pubsub from '@/components/pubsub/index'
 import Machine from '@/components/machine'
 import ElementComponents from '@/components/elementComponents'
+import DataSet01 from '@/components/DataSet01'
 
 Vue.use(Router)
 
@@ -70,11 +71,11 @@ export default new Router({
       path: '/element-ui',
       name: 'ElementComponents',
       component: ElementComponents
+    },
+    {
+      path: '/echarts/dataset-01',
+      name: 'DataSet01',
+      component: DataSet01
     }
   ]
 })
-
-const currentData = [{xx: 123}, {yy: 456}]
-
-const [{xx}] = currentData
-console.log(xx)

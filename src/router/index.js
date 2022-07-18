@@ -12,6 +12,8 @@ import Pubsub from '@/components/pubsub/index'
 import Machine from '@/components/machine'
 import ElementComponents from '@/components/elementComponents'
 import DataSet01 from '@/components/DataSet01'
+import ParentCom from '../components/ComponentCommunication/绑定自定义事件/ParentCom.vue'
+import ParentComPublishSubscription from '../components/ComponentCommunication/发布订阅模式/ParentCom.vue'
 
 Vue.use(Router)
 
@@ -76,6 +78,16 @@ export default new Router({
       path: '/echarts/dataset-01',
       name: 'DataSet01',
       component: DataSet01
+    },
+    {
+      path: '/component-communication/ParentCom-mystyle',
+      name: 'ParentCom',
+      component: ParentCom
+    },
+    {
+      path: '/component-communication/ParentCom-Publish-subscription',
+      name: 'ParentComPublishSubscription',
+      component: ParentComPublishSubscription
     }
   ]
 })

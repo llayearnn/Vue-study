@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "baseUrl": ".",
+      "paths": {
+        "@/": ["./src/"],
+        "components/*": ["src/components/*"],
+        "utils/*": ["node_modules/hzero-front/lib/utils/*"],
+        "assets/*": ["src/assets/*"],
+        "views/*": ["src/views/*"],
+
+      }
+    },
+    "exclude": ["node_modules", "dist"],
+    "include": [
+      "src/**/*"
+    ]
+}

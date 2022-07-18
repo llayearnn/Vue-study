@@ -34,10 +34,180 @@ export default {
   mounted () {
     this.selectEchartArray()
     this.initEcharts01()
+    this.test()
+
+    const data = [
+      {
+        a: 1,
+        b: 2,
+        children: [
+          {
+            a: 1,
+            b: 3
+          }, {
+            a: 1,
+            b: 4
+          }, {
+            a: 1,
+            b: 5,
+            children: [
+              {
+                a: 5,
+                b: 6
+              }
+            ]
+          }
+
+        ]
+      }
+    ]
+    let dataList = [
+      {
+        id: 1,
+        parentId: '0',
+        children: [
+          {
+            id: 2,
+            parentId: 1
+          },
+          {
+            id: 3,
+            parentId: 1
+          },
+          {
+            id: 4,
+            parentId: 1,
+            children: [
+              {
+                id: 5,
+                parentId: 4
+              },
+              {
+                id: 6,
+                parentId: 4
+              }
+            ]
+          }
+        ]
+      },
+      {
+        id: 7,
+        parentId: '0'
+      }
+    ]
+    function look (data, id) {
+      for (let i in data) {
+        if (data[i].id === id) {
+          data[i].children && setFlag(data[i].children, true)
+        }
+        if (data[i].children) {
+          look(data[i].children, id)
+        }
+      }
+      return data
+    }
+
+    function setFlag (data, flag) {
+      for (let i in data) {
+        data[i].flag = flag
+        if (data[i].children) {
+          setFlag(data[i].children, flag)
+        }
+      }
+      return data
+    }
+    console.log(look(dataList, 4))
+    console.log(this.reduceFun(data))
+    // const reduceData = data.reduce((last, cur) => {
+    //   return [...last, {id: cur.id} ]
+    // }, [])
+    // console.log(this.lookForAllId(data))
+
+    // const result = [1, 3, 4, 5, 3, 7, 8].reduce((last, cur) => {
+    //   console.log('上一次的值', last)
+    //   console.log('当期值', cur)
+    //   return cur + last
+    // })
+    // console.log('结果', result)
   },
   methods: {
+    test () {
+      let dataList01 = [
+        {
+          id: 1,
+          parentId: '0',
+          children: [
+            {
+              id: 2,
+              parentId: 1
+            },
+            {
+              id: 3,
+              parentId: 1
+            },
+            {
+              id: 4,
+              parentId: 1,
+              children: [
+                {
+                  id: 5,
+                  parentId: 4
+                },
+                {
+                  id: 6
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: 7,
+          parentId: '0'
+        }
+      ]
+      function find1 (data, id) {
+        for (let i of data) {
+          if (i.id === id) {
+            // 如果找到了 则对其chuildren进行属性添加操作
+            i.flag = true
+            i.children && setTrue(i.children, true)
+          }
+          if (i.children) {
+            // 递归
+            find1(i.children, id)
+          }
+        }
+        return data
+      }
+      function setTrue (data1, flag) {
+        for (let i of data1) {
+          i.flag = flag
+          if (data1.children) {
+            setTrue(i.childern, flag)
+          }
+        }
+        return data1
+      }
+      // const test1 = find1(dataList, 4)
+      console.log(find1(dataList01, 4))
+    },
     openDialog () {
       this.dialogVisible = true
+    },
+    lookForAllId (data = [], arr = []) {
+      for (let item of data) {
+        console.log(item)
+        arr.push({b: item.b})
+        if (item.children && item.children.length) this.lookForAllId(item.children, arr)
+      }
+      return arr
+    },
+    reduceFun (data) {
+      return data.reduce((last, cur) => {
+        const x = [...last, {b: cur.b}, ...this.reduceFun(cur.children)]
+
+        return x
+      }, [])
     },
 
     addString () {
@@ -85,8 +255,6 @@ export default {
           stack: '鼓掌'
         })
       })
-      console.log(dataObj.xdata)
-      console.log(ydata)
       let mychart = echarts.init(document.getElementById('mychart'))
       mychart.setOption({
         xAxis: {

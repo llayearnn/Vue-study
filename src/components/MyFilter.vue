@@ -64,6 +64,14 @@ export default {
           }
         ]
       })
+    },
+    myMap () {
+      const m = new Map()
+      const a = [1, 2]
+      m.set(a, 'arr')
+      console.log(m.get(a))
+      // eslint-disable-next-line no-self-compare
+      console.log([1, 2] === [1, 2])
     }
   },
   computed: {
@@ -94,6 +102,7 @@ export default {
     }
   },
   mounted () {
+    this.myMap()
   },
   beforeDestroy () {
     this.timer && clearInterval(this.timer)

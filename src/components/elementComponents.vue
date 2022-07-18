@@ -41,11 +41,80 @@ export default {
       msg: '0'
     }
   },
+  methods: {
+    test () {
+      let dataList01 = [
+        {
+          id: 1,
+          parentId: '0',
+          label: 'A1',
+          children: [
+            {
+              id: 2,
+              label: 'B1',
+              parentId: 1
+            },
+            {
+              id: 3,
+              label: 'B2',
+              parentId: 1
+            },
+            {
+              id: 4,
+              label: 'B2',
+              parentId: 1,
+              children: [
+                {
+                  id: 5,
+                  label: 'C1',
+                  parentId: 4
+                },
+                {
+                  id: 6,
+                  label: 'C2',
+                  parentId: 4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: 7,
+          label: 'A2',
+          parentId: '0'
+        }
+      ]
+      function flatArr (tree) {
+        return tree.reduce((last, cur) => {
+          return [...last, {...cur, children: null}, ...(cur.children && Array.isArray(cur.children) ? flatArr(cur.children) : [])]
+        }, [])
+      }
+      let str = ''
+      function getAllLabel (data, id) {
+        for (let i of data) {
+          if (i.id === id) {
+            str = i.label + '/' + str
+            if (i.parentId === '0') {
+              return str
+            } else {
+              getAllLabel(data, i.parentId)
+            }
+          }
+        }
+      }
+      const newData = flatArr(dataList01)
+      console.log(newData)
+      getAllLabel(newData, 6)
+      console.log(str)
+      // console.log(newData)
+    }
+  },
   created () {
-    const a = [2, 3, 4]
-    const b = a.slice(0, 1)
-    console.log(a)
-    console.log(b)
+    this.test()
+    // const a = [2, 3, 4]
+    // const b = a.slice(0, 1)
+    // console.log(a)
+    // console.log(b)
   }
 
 }

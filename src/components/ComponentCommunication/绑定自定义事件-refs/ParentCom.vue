@@ -3,7 +3,7 @@
       父组件
       <h3>子组件传递过来的数据时间: {{ChildrDate}}</h3>
         <hr>
-        发布订阅模式
+        绑定自定义事件 -refs
       <ChildrCom ref="ChildrComEmit"></ChildrCom>
   </div>
 </template>

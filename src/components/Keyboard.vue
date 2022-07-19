@@ -48,7 +48,6 @@ export default {
       };
     },
     showEcharts () {
-      console.log(this.dataArr)
       let chartDom = this.$echarts.init(document.getElementById('selfMain'))
       chartDom.setOption({
         title: {
@@ -74,9 +73,9 @@ export default {
     }
   },
   mounted () {
-    setInterval(() => {
+    this.timer = setInterval(() => {
       this.intervalUpdate()
-      console.log(this.dataArr)
+
       this.showEcharts()
     }, 500)
 
@@ -95,6 +94,7 @@ export default {
     */
   },
   beforeDestroy () {
+    console.log('keyboard组件销毁')
     this.timer && clearInterval(this.timer)
   }
 

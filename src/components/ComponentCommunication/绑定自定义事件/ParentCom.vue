@@ -4,9 +4,12 @@
       <h3>子组件传递过来的数据时间: {{ChildrDate}}</h3>
         <hr>
         通过自定义事件
-      <ChildrCom v-on:sendDataTo=getChildData></ChildrCom>
-      <div class="other">其他</div>
-      <!-- <children-props :getChildData='getChildData'></children-props> -->
+      <!-- <ChildrCom v-on:sendDataTo=getChildData></ChildrCom> -->
+      <ChildrCom @sendDataTo=getChildData></ChildrCom>
+      <div class="other">
+        <el-button type="" @click="goTo">去其他页面</el-button>
+        <router-link to="/keyboard"> keyboard</router-link>
+      </div>
 
   </div>
 </template>
@@ -26,6 +29,9 @@ export default {
     getChildData (msg) {
       console.log('获取子组件数据1', msg)
       this.ChildrDate = msg
+    },
+    goTo () {
+      this.$router.push('/test')
     }
   },
   components: {ChildrCom},

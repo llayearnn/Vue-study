@@ -16,6 +16,8 @@ import ParentCom from '../components/ComponentCommunication/绑定自定义事�
 import ParentComPublishSubscription from '../components/ComponentCommunication/绑定自定义事件-refs/ParentCom.vue'
 import GlobalParentCom from '@/components/ComponentCommunication/全局事件总线/安装全局事件总线/ParentCom.vue'
 import PubsubPublishCom from '@/components/ComponentCommunication/全局事件总线/发布订阅模式/ParentCom.vue'
+import AnimationTest from '@/components/Animation/Test.vue'
+
 Vue.use(Router)
 
 export default new Router({
@@ -103,6 +105,13 @@ export default new Router({
       path: '/component-communication/pubsub-publish',
       name: 'PubsubPublishCom',
       component: PubsubPublishCom
+    },
+    // Vue动画    AnimationTest
+    {
+      path: '/component-communication/animation-test',
+      name: 'AnimationTest',
+      component: AnimationTest
     }
+
   ]
 })

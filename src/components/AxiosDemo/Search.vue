@@ -3,7 +3,7 @@
       <div class="searchArea">
         <el-form :inline="true" :model="formInline" class="demo-form-inline">
           <el-form-item label="活动区域">
-            <el-input style="display:inline-block" placeholder="请输入内容" v-model="formInline.input" clearable></el-input>
+            <el-input style="display:inline-block" @keyup.enter.native="onSubmit" placeholder="请输入内容" v-model="formInline.input" clearable></el-input>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="onSubmit">查询</el-button>

@@ -44,7 +44,7 @@
     //   编译后的文件放的位置，js=>ts放的位置
       "outDir": "./dist",
     //   将编译后的文件代码合并至一个文件
-      "outFile": "./dist/app.js",
+      // "outFile": "./dist/app.js",
     //   是否对js文件进行编译
     // 严格检查总开关
     "strict": false,

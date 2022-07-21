@@ -17,6 +17,7 @@ import ParentComPublishSubscription from '../components/ComponentCommunication/�
 import GlobalParentCom from '@/components/ComponentCommunication/全局事件总线/安装全局事件总线/ParentCom.vue'
 import PubsubPublishCom from '@/components/ComponentCommunication/全局事件总线/发布订阅模式/ParentCom.vue'
 import AnimationTest from '@/components/Animation/Test.vue'
+import GithubUserList from '@/components/AxiosDemo/GithubUserList.vue'
 
 Vue.use(Router)
 
@@ -111,6 +112,11 @@ export default new Router({
       path: '/component-communication/animation-test',
       name: 'AnimationTest',
       component: AnimationTest
+    },
+    {
+      path: '/github-getusers/GithubUserList-test',
+      name: 'GithubUserList',
+      component: GithubUserList
     }
 
   ]

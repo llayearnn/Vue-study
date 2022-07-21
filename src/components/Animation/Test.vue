@@ -24,12 +24,14 @@ export default {
 </script>
 <style scoped>
     h2{
-        background-color: orange
+        background-color: orange;
+        /* 控制动画的播放和暂停 paused running */
+        animation-play-state:paused
         /* animation: name duration timing-function delay iteration-count direction fill-mode; */
     }
     /* .v-enter-active{ */
       .hello-enter-active{
-        animation: myStyle 2s ease;
+        animation: myStyle 1s ease;
         /* background-color: greenyellow; */
         /* background-color: green; */
     }
